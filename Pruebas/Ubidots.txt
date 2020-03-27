@@ -1,0 +1,16 @@
+mosquitto_sub -p 8883 -h things.ubidots.com -t "/v1.6/devices/villa-elvira/pluviobackup/lv" -u A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp -q 1 --cafile /etc/mosquitto/certs/ca.crt
+mosquitto_sub -p 8883 -h things.ubidots.com -t "/v1.6/devices/villa-elvira/enviobackup/lv" -u A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp -q 1 --cafile /etc/mosquitto/certs/ca.crt
+
+mosquitto_pub -h "things.ubidots.com" -t "/v1.6/devices/villa-elvira" -u "A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp" -p 8883 -q 1 --cafile /etc/mosquitto/certs/ca.crt -m "{\"ph\":\"5\"}"
+mosquitto_pub -h "things.ubidots.com" -t "/v1.6/devices/villa-elvira" -u "A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp" -p 8883 -q 1 --cafile /etc/mosquitto/certs/ca.crt -m "{\"pluviobackup\":\"0\",\"enviobackup-1\":\"0\",\"enviobackup-2\":\"0\",\"enviobackup-3\":\"0\",\"enviobackup-4\":\"0\"}"
+
+mosquitto_pub -h "things.ubidots.com" -t "/v1.6/devices/villa-elvira" -u "A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp" -p 8883 -q 1 --cafile /etc/mosquitto/certs/ca.crt -m "{\"pluviosidad\":{\"value\":2.2352,\"timestamp\":1560683435000}}"
+mosquitto_pub -h "things.ubidots.com" -t "/v1.6/devices/villa-elvira" -u "A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp" -p 8883 -q 1 --cafile /etc/mosquitto/certs/ca.crt -m "{\"pluviosidad\":{\"value\":7.8232,\"timestamp\":1560596871000}}"
+mosquitto_pub -h "things.ubidots.com" -t "/v1.6/devices/villa-elvira" -u "A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp" -p 8883 -q 1 --cafile /etc/mosquitto/certs/ca.crt -m "{\"pluviosidad\":{\"value\":15.6464,\"timestamp\":1560510500000}}"
+
+mosquitto_pub -h "things.ubidots.com" -t "/v1.6/devices/villa-elvira" -u "A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp" -p 8883 -q 1 --cafile /etc/mosquitto/certs/ca.crt -m "{\"pluviosidad\":{\"value\":0,\"timestamp\":1560855943000}}"
+
+mosquitto_sub -h things.ubidots.com -t "/v1.6/devices/villa-elvira/enviobackup/lv" -u A1E-ejDvvsRPaDEyvyYDYhVU4akDa0VqUp -p 8883 -q 1 -o /etc/mosquitto/value --cafile /etc/mosquitto/certs/ca.crt -C 1
+
+
+opkg update ; opkg install mosquitto mosquitto-client libmosquitto
